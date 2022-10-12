@@ -7,6 +7,12 @@ The Introduction to ML for Biologists is short interactive workshop to introduce
 ## When and Where: 
 Virtual, on Friday 14th October at 9:00 to 11:30 (Istanbul standard time, GMT+3) | 11:30 -14:00 (Indian standard time) | 17:00 - 19:30 (Australian daylight saving  time, GMT+11). 
 
+## Prerequisites:
+
+- Familiarity with python (an intermediate level), specifically:
+- Understand variables, data types, functions and classes
+- Able to search for and install external libraries for own use cases
+
 ## Lead Instructor: 
 * Dr Sonika Tyagi, Monash University, AUSTRALIA
 ## Co-instructors/Helpers: 
