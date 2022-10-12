@@ -130,10 +130,12 @@ print(ordinal)
 
 While these can be used on their own, note that this is often just the first step, and that ordinal encodings can be transformed further.
 
-Step 2: Transformation
-* Frequency tables
-* Embedding vector
-* Positional encoding
+While these can be used on their own, note that this is often just the first step, and that ordinal encodings can be transformed further.
+
+#### Step 2: Transformation
+- Frequency tables
+- Embedding vector
+- Positional encoding
 
 ##### Frequency tables
 
