@@ -390,13 +390,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#image-here" class="md-nav__link">
-    IMAGE HERE
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -575,13 +568,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#image-here" class="md-nav__link">
-    IMAGE HERE
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -749,7 +735,8 @@ print(tfidf_matrix)
 <p>Although the frequency-based approaches above are often effective on their own, one key piece of information is lost. Individual tokens are treated as independent occurrences, which is not realistic in both natural language and biology. To account for the semantic relationship between tokens, a different approach is required.</p>
 <h5 id="embedding-vector">Embedding vector</h5>
 <p>A latent space is generated from all tokens in the corpus. This n-dimensional <code>embedding</code> accounts for every combination of tokens in the data. Taking a single sequence (i.e. group of tokens) and projecting this back onto the embedding returns a unique vector for each sequence. Examining these further shows that tokens which are closely related to each other are naturally recapitulated by the model. For example, in a real life English dataset, you may expect the following word pairs to be closely related to each other:</p>
-<h4 id="image-here">IMAGE HERE</h4>
+<p><br>
+<img alt="image" src="../../../images/embed.png" /></p>
 <div class="highlight"><pre><span></span><code>import gensim
 from gensim.models import Word2Vec
 
