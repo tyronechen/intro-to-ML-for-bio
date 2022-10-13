@@ -781,7 +781,7 @@ model_metrics(rf_base, x_test, y_test, y_pred)
 print(&quot;Feature Importance Plot:\n&quot;)
 feature_imp(rf_base, feature, 10)
 </code></pre></div></p>
-<p>Lets plot a ROC-AUC plot:</p>
+<p>Lets plot a ROC-AUC curve:</p>
 <p><div class="highlight"><pre><span></span><code>from sklearn.metrics import RocCurveDisplay
 ax = plt.gca()
 rfc_disp = RocCurveDisplay.from_estimator(rf_base, x_test, y_test, ax=ax, alpha=0.8)
