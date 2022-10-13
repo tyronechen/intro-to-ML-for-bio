@@ -229,7 +229,7 @@ Although the frequency-based approaches above are often effective on their own, 
 A latent space is generated from all tokens in the corpus. This n-dimensional `embedding` accounts for every combination of tokens in the data. Taking a single sequence (i.e. group of tokens) and projecting this back onto the embedding returns a unique vector for each sequence. Examining these further shows that tokens which are closely related to each other are naturally recapitulated by the model. For example, in a real life English dataset, you may expect the following word pairs to be closely related to each other:
 
 <br>
-![image](../../images/embed.png)
+![image](../images/embed.png)
 
 ```
 import gensim

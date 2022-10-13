@@ -47,5 +47,5 @@ Topics covered by this workshop include:
 This workshop will be delivered using a mixture of lectures, hands-on practical sessions, and open discussions.
 
 ## Acknowledgements
-This workshop was developed by the memebers of the Tyagi lab at Monash University Australia. ALl authors have contributed equally <br>
+This workshop was developed by the memebers of the Tyagi lab at Monash University Australia. All authors have contributed equally <br>
 
