@@ -544,9 +544,7 @@
 <p>Recognize various genomics formats to represent DNA/RNA sequence data </p>
 </li>
 <li>
-<p>Read in sequence data in FASTA format using Python or BioPython modules 
-    decide on filters and cutoffs for cleaning up data ready for
-    downstream analysis</p>
+<p>Read in sequence data in FASTA format using Python or BioPython modules </p>
 </li>
 </ul>
 <hr />
@@ -659,7 +657,7 @@ The table below provides an indication to how quality scores related to base cal
  for sequence in SeqIO.parse(&quot;example.fasta&quot;, &quot;fasta&quot;):
      print(sequence.id)
      print(sequence.seq)
-     print (len(sequence)
+     print(len(sequence)
 </code></pre></div>
 <p>A similar function is available to read the FASTQ format as well:</p>
 <p><div class="highlight"><pre><span></span><code>from Bio import SeqIO
