@@ -73,7 +73,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from pprint import pprint
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from sklearn.feature_extraction.text import CountVectorizer
 
 ```
 
