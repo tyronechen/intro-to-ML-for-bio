@@ -278,7 +278,7 @@ feature_imp(rf_base, feature, 10)
 
 
 
-Lets plot a ROC-AUC plot:
+Lets plot a ROC-AUC curve:
 
 ```
 from sklearn.metrics import RocCurveDisplay

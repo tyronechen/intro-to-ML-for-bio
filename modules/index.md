@@ -48,4 +48,5 @@ This workshop will be delivered using a mixture of lectures, hands-on practical 
 
 ## Acknowledgements
 This workshop was developed by the memebers of the Tyagi lab at Monash University Australia. All authors have contributed equally <br>
+The templates used for the ghpages were developed as part of the BPA Australia Ltd training activities.
 
