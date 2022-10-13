@@ -34,6 +34,8 @@ https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestC
 Confusion matrix:
 https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
 
+A read on ROC curves
+https://aiineverything.blogspot.com/2021/08/misconception--around-roc-auc.html
 
 ***
 ## Author Information
@@ -116,7 +118,7 @@ print(dna.head())
 ```
 We have previously determined the length of `kmer=5` to be used here.
 
-We will next join the individual `kmers` to long string of setnence equivalent. Use the following function:
+We will next join the individual `kmers` to long string of sentence equivalent. Use the following function:
 
 ```
 def to_sentence(words):
@@ -173,14 +175,23 @@ print("Total data iterms:",X.shape)
 print("Total data labels", Y.shape)
 ```
 
-Take a peak into the count vector we just created:
+Take a peek into the count vector we just created:
 
 ```
 cv.get_feature_names_out()[10:50]
 ```
 
-You can visualise the toekn frequencies:
+You can visualise the token frequencies:
 
+Funtion to visualize frequencies:
+
+```
+from yellowbrick.text import FreqDistVisualizer
+def token_freq_plot(feature):
+  visualizer = FreqDistVisualizer(features=feature, orient='v')
+  visualizer.fit(X)
+  visualizer.show()
+```
 ```
 token_freq_plot(feature)
 ```
@@ -265,6 +276,19 @@ feature_imp(rf_base, feature, 10)
 
 ```
 
+
+
+Lets plot a ROC-AUC plot:
+
+```
+from sklearn.metrics import RocCurveDisplay
+ax = plt.gca()
+rfc_disp = RocCurveDisplay.from_estimator(rf_base, x_test, y_test, ax=ax, alpha=0.8)
+#rfc_disp.plot(ax=ax, alpha=0.8)
+plt.show()
+```
 For this exercise we have run the model with default paramters but in real practice we will running and optimisation step where we will find the best paramter settings for pur case study.
+
+We will discuss that topic on another day!
 
 #END
