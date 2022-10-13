@@ -202,7 +202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../trainers/trainers.md" class="md-nav__link">
+      <a href="../../../trainers/trainers/" class="md-nav__link">
         The Trainers
       </a>
     </li>
@@ -606,6 +606,8 @@ pandas, numpym sklearn, matplotlib, seaborn</p>
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a></p>
 <p>Confusion matrix:
 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html</a></p>
+<p>A read on ROC curves
+<a href="https://aiineverything.blogspot.com/2021/08/misconception--around-roc-auc.html">https://aiineverything.blogspot.com/2021/08/misconception--around-roc-auc.html</a></p>
 <hr />
 <h2 id="author-information">Author Information</h2>
 <p><em>Primary Author(s):</em>  <br />
@@ -659,7 +661,7 @@ dna[&#39;kmers&#39;] = dna.apply(lambda x: get_kmers(x[&#39;sequence&#39;], kmer
 print(dna.head())
 </code></pre></div>
 We have previously determined the length of <code>kmer=5</code> to be used here.</p>
-<p>We will next join the individual <code>kmers</code> to long string of setnence equivalent. Use the following function:</p>
+<p>We will next join the individual <code>kmers</code> to long string of sentence equivalent. Use the following function:</p>
 <p><div class="highlight"><pre><span></span><code>def to_sentence(words):
   r&quot;&quot;&quot;This function formats the k-mers such that it is useful for language models where algorithm expects sequences of words&quot;&quot;&quot;
   initial=&#39;&#39;
@@ -701,12 +703,19 @@ Y=np.array(dna[&#39;labels&#39;])
 print(&quot;Total data iterms:&quot;,X.shape)
 print(&quot;Total data labels&quot;, Y.shape)
 </code></pre></div></p>
-<p>Take a peak into the count vector we just created:</p>
+<p>Take a peek into the count vector we just created:</p>
 <div class="highlight"><pre><span></span><code>cv.get_feature_names_out()[10:50]
 </code></pre></div>
-<p>You can visualise the toekn frequencies:</p>
-<div class="highlight"><pre><span></span><code>token_freq_plot(feature)
+<p>You can visualise the token frequencies:</p>
+<p>Funtion to visualize frequencies:</p>
+<p><div class="highlight"><pre><span></span><code>from yellowbrick.text import FreqDistVisualizer
+def token_freq_plot(feature):
+  visualizer = FreqDistVisualizer(features=feature, orient=&#39;v&#39;)
+  visualizer.fit(X)
+  visualizer.show()
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>token_freq_plot(feature)
+</code></pre></div></p>
 <h3 id="4-split-the-data-into-train-test-and-validation-sets">4) Split the data into train, test, and validation sets</h3>
 <div class="highlight"><pre><span></span><code>def split_dataset(X, Y, train_ratio, test_ratio, validation_ratio):
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=1 - train_ratio)
@@ -772,7 +781,15 @@ model_metrics(rf_base, x_test, y_test, y_pred)
 print(&quot;Feature Importance Plot:\n&quot;)
 feature_imp(rf_base, feature, 10)
 </code></pre></div></p>
-<p>For this exercise we have run the model with default paramters but in real practice we will running and optimisation step where we will find the best paramter settings for pur case study.</p>
+<p>Lets plot a ROC-AUC plot:</p>
+<p><div class="highlight"><pre><span></span><code>from sklearn.metrics import RocCurveDisplay
+ax = plt.gca()
+rfc_disp = RocCurveDisplay.from_estimator(rf_base, x_test, y_test, ax=ax, alpha=0.8)
+#rfc_disp.plot(ax=ax, alpha=0.8)
+plt.show()
+</code></pre></div>
+For this exercise we have run the model with default paramters but in real practice we will running and optimisation step where we will find the best paramter settings for pur case study.</p>
+<p>We will discuss that topic on another day!</p>
 <h1 id="end">END</h1>
 
 
