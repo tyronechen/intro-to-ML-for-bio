@@ -632,6 +632,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from pprint import pprint
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.feature_extraction.text import CountVectorizer
 </code></pre></div>
 <h3 id="1-read-in-the-data-and-split-each-input-sequence-into-tokens">1) Read in the data and split each input sequence into &ldquo;tokens&rdquo;.</h3>
 <p>We have prepared a data file (<code>.csv</code> format) contain sequences from <code>promoter</code> (label <code>1</code>) and <code>non-promoter</code> (label <code>0</code>) groups.</p>
