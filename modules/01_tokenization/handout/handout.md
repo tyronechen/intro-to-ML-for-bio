@@ -6,9 +6,8 @@
 
 The overall objective is to understand how biological sequence data is transformed into a machine-readable format for input into a machine learning pipeline.
 
-- View the flow of data through a conventional preproceessing pipeline
-- Learn common data transformations
-- Familiarity with common representations
+- View the flow of data through a conventional DNA data preproceessing pipeline
+- Familiarity with common genomic data transformations and representations
 - Explore how large sequences are separated into smaller components
 - Awareness of the ecosystem of available libraries
 
@@ -19,13 +18,13 @@ The overall objective is to understand how biological sequence data is transform
 ### Tools Used
 
 Python Package:  
-http://
+Pandas, BioPython, sklearn, gensim
 
 BioPython SeqIO package:  
 https://biopython.org/wiki/SeqIO
 
 Google Colaboratory:  
-http://
+https://colab.research.google.com/
 
 ***
 ##Useful Links
@@ -38,7 +37,7 @@ http://
 Tyrone Chen, Navya Tyagi, Naima Vahab
 
 *Contributor(s):*    
-Sonika Tyagi, Sarthak Chauhan 
+Sonika Tyagi
 
 ***
 
@@ -51,7 +50,7 @@ Assuming you have obtained well-defined sequence data and their corresponding me
 4. Transform the numeric representation as needed, depending on your use case.
 
 
-*NOTE*: in the context of this tutorial, we will be using the term `token` and `k-mer` interchangeably.
+> *NOTE*: in the context of this tutorial, we will be using the term `token` and `k-mer` interchangeably.
 
 Let us take a single biological sequence as an example. Assume that this corresponds to a gene of interest:
 
@@ -75,6 +74,16 @@ length = 3
 kmers = get_kmers(input_sequence, length)
 print(kmers)
 ```
+
+We can see that we get k-mers or tokens of length 3 in our example. It is important to note that we take a sliding window of k-mers:
+
+```
+INPUT : TAATG...
+KMER_1: TAA--
+KMER_2: -AAT-
+KMER_3: --ATG
+```
+>	*NOTE*: in real applications, a range of longer k-mers are commonly used, and this is not the only way to split your data into chunks0
 
 ### 2) Denoise the data if needed
 
@@ -115,7 +124,31 @@ ordinal = encode_ordinal(input_sequence, length)
 print(ordinal)
 ```
 
+```
+[[5.]
+ [0.]
+ [1.]
+ [7.]
+ [4.]
+ [3.]
+ [2.]
+ [6.]]
+```
 > *NOTE*: As an alternative to ordinal encoding, it is also possible to encode tokens as one-hot encodings. This method is not practical to use in most cases due to its sparsity, but we demonstrate an example for completeness. Compare this to the above:
+
+```
+from numpy import asarray
+from sklearn.preprocessing import OneHotEncoder
+
+def onehoten(sequence,size):
+  r"""Array of categories(here string) are sorted and returns binary variables for each category"""
+  doc=sentence_in_list(sequence,size)   
+  data = asarray(doc)
+  encoder = OneHotEncoder(sparse=False)
+  onehot = encoder.fit_transform(data)
+  return onehot
+onehoten(input_sequence,length)
+```
 
 ```
 [[ 0 0 0 0 0 1 0 0]
