@@ -109,7 +109,7 @@ def get_kmers(sequence: str, length: int):
 Use the above function with the sequence data now stored in a dataframe named `dna`:
 ```
 # in this example, we will split on length 5 k-mers
-kmer_length = 5
+kmer_length = 
 seq=dna.sequence[0]
 dna['kmers'] = dna.apply(lambda x: get_kmers(x['sequence'], kmer_length), axis=1)
 print(dna.head())
@@ -149,7 +149,7 @@ def filter_kmers(tokens: str, stopwords: list):
   return [x for x in tokens if x not in stopwords]
 
 # in this example, let us pretend this list of k-mers have low information content
-stopwords = ["AAAAA", "TTTTT"]
+stopwords = [AAAAA", "TTTTT"]
 filtered_kmers = filter_kmers(kmers, stopwords)
 print(filtered_kmers)
 ```
@@ -160,9 +160,10 @@ Here, we are using a frequuency transformation based approach.
 
 The n-gram size of 4 is previously determined by testing
 ```
-cv = CountVectorizer(ngram_range=(4,4), max_features=500) 
+cv = CountVectorizer(ngram_range=(,), max_features=500) 
 X = cv.fit_transform(joined_kmers)
-#print(X)
+
+#get feature names
 feature=cv.get_feature_names_out()
 # X and Y should have same length 
 
