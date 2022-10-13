@@ -15,8 +15,8 @@ At the end of this practical you should be able to:
 
 ### Data
 
-We have promoter seuqneces of Yeast as one group of data labeled as `1` and a similar synthetic negative data was generated and labelled as `0`.
-The data is provided as a file called [`promoter.csv`](../data/promoter.csv) 
+We have promoter seuqneces of Yeast as one group of data labeled as `1`, and a similar synthetic negative data was generated and labelled as `0`.
+The data is provided in a file called [`promoter.csv`](../data/promoter.csv) 
 
 ### Tools Used
 
