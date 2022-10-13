@@ -5,9 +5,6 @@ After completing this practical the trainee should be able to:
 -  Recognize various genomics formats to represent DNA/RNA sequence data 
 
 -  Read in sequence data in FASTA format using Python or BioPython modules 
-    decide on filters and cutoffs for cleaning up data ready for
-    downstream analysis
-
 
 ***
 ## Resources You’ll be Using
@@ -115,7 +112,7 @@ Open your Python notebook and type the following code in teh code cell and run.
  for sequence in SeqIO.parse("example.fasta", "fasta"):
      print(sequence.id)
      print(sequence.seq)
-     print (len(sequence)
+     print(len(sequence)
 ```
 
 A similar function is available to read the FASTQ format as well:
