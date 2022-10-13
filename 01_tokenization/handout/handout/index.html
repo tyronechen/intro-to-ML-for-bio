@@ -415,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../02_RF_model/handout/handout.md" class="md-nav__link">
+      <a href="../../../02_RF_model/handout/handout/" class="md-nav__link">
         ML model
       </a>
     </li>
@@ -597,9 +597,8 @@
 <h2 id="learning-objectives">Learning objectives:</h2>
 <p>The overall objective is to understand how biological sequence data is transformed into a machine-readable format for input into a machine learning pipeline.</p>
 <ul>
-<li>View the flow of data through a conventional preproceessing pipeline</li>
-<li>Learn common data transformations</li>
-<li>Familiarity with common representations</li>
+<li>View the flow of data through a conventional DNA data preproceessing pipeline</li>
+<li>Familiarity with common genomic data transformations and representations</li>
 <li>Explore how large sequences are separated into smaller components</li>
 <li>Awareness of the ecosystem of available libraries</li>
 </ul>
@@ -607,11 +606,11 @@
 <h2 id="resources-youll-be-using">Resources You’ll be Using</h2>
 <h3 id="tools-used">Tools Used</h3>
 <p>Python Package:<br />
-http://</p>
+Pandas, BioPython, sklearn, gensim</p>
 <p>BioPython SeqIO package:<br />
 <a href="https://biopython.org/wiki/SeqIO">https://biopython.org/wiki/SeqIO</a></p>
 <p>Google Colaboratory:<br />
-http://</p>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
 <hr />
 <h2 id="useful-links">Useful Links</h2>
 <hr />
@@ -619,7 +618,7 @@ http://</p>
 <p><em>Primary Author(s):</em>  <br />
 Tyrone Chen, Navya Tyagi, Naima Vahab</p>
 <p><em>Contributor(s):</em>  <br />
-Sonika Tyagi, Sarthak Chauhan </p>
+Sonika Tyagi</p>
 <hr />
 <h2 id="workflow">Workflow</h2>
 <p>Assuming you have obtained well-defined sequence data and their corresponding metadata:
@@ -627,7 +626,9 @@ Sonika Tyagi, Sarthak Chauhan </p>
 2. Denoise the data if needed.
 3. Convert these tokens into a numeric representation.
 4. Transform the numeric representation as needed, depending on your use case.</p>
+<blockquote>
 <p><em>NOTE</em>: in the context of this tutorial, we will be using the term <code>token</code> and <code>k-mer</code> interchangeably.</p>
+</blockquote>
 <p>Let us take a single biological sequence as an example. Assume that this corresponds to a gene of interest:</p>
 <div class="highlight"><pre><span></span><code>input_sequence = &quot;TAATGGCTCT&quot;
 </code></pre></div>
@@ -644,6 +645,15 @@ length = 3
 kmers = get_kmers(input_sequence, length)
 print(kmers)
 </code></pre></div>
+<p>We can see that we get k-mers or tokens of length 3 in our example. It is important to note that we take a sliding window of k-mers:</p>
+<div class="highlight"><pre><span></span><code>INPUT : TAATG...
+KMER_1: TAA--
+KMER_2: -AAT-
+KMER_3: --ATG
+</code></pre></div>
+<blockquote>
+<p><em>NOTE</em>: in real applications, a range of longer k-mers are commonly used, and this is not the only way to split your data into chunks0</p>
+</blockquote>
 <h3 id="2-denoise-the-data-if-needed">2) Denoise the data if needed</h3>
 <p>In some cases, we want to remove certain tokens, commonly tokens with low information content. In English, this is straightforward and involves filtering out &ldquo;stopwords&rdquo;, for example <code>the</code>, <code>and</code> or <code>is</code>. In Biology, this is not always done, and will require review on a case-by-case basis.</p>
 <div class="highlight"><pre><span></span><code>def filter_kmers(tokens: str, stopwords: list):
@@ -676,9 +686,30 @@ def encode_ordinal(input_sequence: str, length: int):
 ordinal = encode_ordinal(input_sequence, length)
 print(ordinal)
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>[[5.]
+ [0.]
+ [1.]
+ [7.]
+ [4.]
+ [3.]
+ [2.]
+ [6.]]
+</code></pre></div>
 <blockquote>
 <p><em>NOTE</em>: As an alternative to ordinal encoding, it is also possible to encode tokens as one-hot encodings. This method is not practical to use in most cases due to its sparsity, but we demonstrate an example for completeness. Compare this to the above:</p>
 </blockquote>
+<div class="highlight"><pre><span></span><code>from numpy import asarray
+from sklearn.preprocessing import OneHotEncoder
+
+def onehoten(sequence,size):
+  r&quot;&quot;&quot;Array of categories(here string) are sorted and returns binary variables for each category&quot;&quot;&quot;
+  doc=sentence_in_list(sequence,size)   
+  data = asarray(doc)
+  encoder = OneHotEncoder(sparse=False)
+  onehot = encoder.fit_transform(data)
+  return onehot
+onehoten(input_sequence,length)
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>[[ 0 0 0 0 0 1 0 0]
  [ 1 0 0 0 0 0 0 0]
  [ 0 1 0 0 0 0 0 0]
@@ -736,7 +767,7 @@ print(tfidf_matrix)
 <h5 id="embedding-vector">Embedding vector</h5>
 <p>A latent space is generated from all tokens in the corpus. This n-dimensional <code>embedding</code> accounts for every combination of tokens in the data. Taking a single sequence (i.e. group of tokens) and projecting this back onto the embedding returns a unique vector for each sequence. Examining these further shows that tokens which are closely related to each other are naturally recapitulated by the model. For example, in a real life English dataset, you may expect the following word pairs to be closely related to each other:</p>
 <p><br>
-<img alt="image" src="../../../images/embed.png" /></p>
+<img alt="image" src="../../images/embed.png" /></p>
 <div class="highlight"><pre><span></span><code>import gensim
 from gensim.models import Word2Vec
 
@@ -798,6 +829,21 @@ print(vector)
           </div>
         </a>
       
+      
+        
+        <a href="../../../02_RF_model/handout/handout/" class="md-footer__link md-footer__link--next" aria-label="Next: ML model" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ML model
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
