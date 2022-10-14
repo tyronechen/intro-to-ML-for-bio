@@ -166,7 +166,6 @@ cv = CountVectorizer(ngram_range=(,), max_features=500)
 X = cv.fit_transform(joined_kmers)
 
 #get feature names
-feature=cv.get_feature_names_out()
 # X and Y should have same length 
 
 #separate labels
@@ -181,20 +180,6 @@ Take a peek into the count vector we just created:
 cv.get_feature_names_out()[10:50]
 ```
 
-You can visualise the token frequencies:
-
-Funtion to visualize frequencies:
-
-```
-from yellowbrick.text import FreqDistVisualizer
-def token_freq_plot(feature):
-  visualizer = FreqDistVisualizer(features=feature, orient='v')
-  visualizer.fit(X)
-  visualizer.show()
-```
-```
-token_freq_plot(feature)
-```
 
 ### 4) Split the data into train, test, and validation sets
 
@@ -247,13 +232,6 @@ def model_metrics(model, x_test, y_test, y_pred):
   print("Confusion matrix:\n", conf)
 
 
-def feature_imp(model,feature_names, n_top_features):
-  feats=np.array(feature_names)
-  importances = model.feature_importances_
-  indices = np.argsort(importances)[::-1]
-  plt.figure(figsize=(8,10))
-  plt.barh(feats[indices][:n_top_features ], importances[indices][:n_top_features ])
-  plt.xlabel("RF feature Importance ")
 ```
 
 
@@ -270,9 +248,6 @@ rf_base, y_pred, y_probas=train_model(model, param, x_train, y_train, x_test)
 model_metrics(rf_base, x_test, y_test, y_pred)
 
 
-##Feature imp plot
-print("Feature Importance Plot:\n")
-feature_imp(rf_base, feature, 10)
 
 ```
 
@@ -290,5 +265,34 @@ plt.show()
 For this exercise we have run the model with default paramters but in real practice we will running and optimisation step where we will find the best paramter settings for pur case study.
 
 We will discuss that topic on another day!
+
+
+The learning plots can give an idea whether the model is over or underfitting:
+
+```
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+from matplotlib.legend_handler import HandlerLine2D
+
+train_results = []
+test_results = []
+list_nb_trees = [5, 10, 15, 30, 45, 60, 80, 100]
+
+for nb_trees in list_nb_trees:
+    rf = RandomForestRegressor(n_estimators=nb_trees)
+    rf.fit(x_train, y_train)
+
+    train_results.append(mean_squared_error(y_train, rf.predict(x_train)))
+    test_results.append(mean_squared_error(y_test, rf.predict(x_test)))
+
+line1, = plt.plot(list_nb_trees, train_results, color="r", label="Training Score")
+line2, = plt.plot(list_nb_trees, test_results, color="g", label="Testing Score")
+
+plt.legend(handler_map={line1: HandlerLine2D(numpoints=2)})
+plt.ylabel('MSE')
+plt.xlabel('n_estimators')
+plt.show()
+```
 
 #END
