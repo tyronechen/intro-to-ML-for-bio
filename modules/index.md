@@ -14,10 +14,10 @@ Virtual, on Sunday 13 November 2022
 - Able to search for and install external libraries for own use cases
 
 ## Lead Instructor: 
-* Dr Sonika Tyagi, Monash University, AUSTRALIA
+* Assoc. Professor Sonika Tyagi, Monash University, AUSTRALIA
+* Tyrone Chen, Tyagi Lab, Monash University
 ## Co-instructors/Helpers: 
-* Dr Harpreet Singh, Hansraj Mahila Maha Vidyalaya Punjab INDIA
-* Tyrone Chen, and Naima Vahab, Tyagi Lab, Monash University
+* Naima Vahab, Tyagi Lab, Monash University
 
 ## Duration: 2.0 h
 
