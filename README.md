@@ -2,4 +2,4 @@
 
 Link to the workshop:
 
-<LINK>
+https://tsonika.github.io/intro-to-ML-for-biologists
