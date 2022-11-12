@@ -1,11 +1,11 @@
-# Welcome to the Introduction to Machine Learning (ML) for Biologists Workshop
+# Welcome to the Introduction to Machine Learning (ML) for Bioinformatics Workshop
 <br>
 
-The Introduction to ML for Biologists is short interactive workshop to introduce basic concepts of ML predictive modeling for genomics data. 
+The Introduction to ML is short interactive workshop to introduce basic concepts of ML predictive modeling for genomics data.
 
 
 ## When and Where: 
-Virtual, on Friday 14th October at 9:00 to 11:30 (Istanbul standard time, GMT+3) | 11:30 -14:00 (Indian standard time) | 17:00 - 19:30 (Australian daylight saving  time, GMT+11). 
+Virtual, on Sunday 13 November 2022 
 
 ## Prerequisites:
 
@@ -19,15 +19,14 @@ Virtual, on Friday 14th October at 9:00 to 11:30 (Istanbul standard time, GMT+3)
 * Dr Harpreet Singh, Hansraj Mahila Maha Vidyalaya Punjab INDIA
 * Tyrone Chen, and Naima Vahab, Tyagi Lab, Monash University
 
-## Duration: 2.5 h
+## Duration: 2.0 h
 
 |*Subject* |*Time*| *notes*|
 |-----|--------|-----|
-||Date: 14 October 2022 |
-|Introductory lecture |30 min |Slides talk|
-|Tokenization interactive demo |10 min| Interactive demo|
+||Date: 13 November 2022 |
+|Introductory lecture |40 min |Slides talk|
 |Break |5 min||
-|ML models |1.5 h|Hands-on|
+|ML models |1 h|Hands-on|
 |Break |5 min||
 |Recap + QA|10 min | Group discussion|
 

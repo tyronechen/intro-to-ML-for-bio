@@ -1,0 +1,57 @@
+site_name: Introduction to ML for Bioinformaticians Using Google Colaboratory
+site_description: This contains all material for the Introduction to NGS workshop.
+site_author: Sonika Tyagi 
+docs_dir: modules
+
+copyright: '&copy; The authors; 2022-'
+
+#Documentation and theme
+theme: material
+
+# Options
+extra:
+  palette:
+    primary: 'indigo'
+    accent: 'light blue'
+
+  feature:
+    tabs: false
+
+  site_favicon: 'media/logos/foo.png'
+
+markdown_extensions:
+    - admonition
+    - smarty
+    - tables
+    - markdown_include.include
+    - codehilite
+    - toc
+    - mdx_math
+    - pymdownx.betterem
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist
+    - pymdownx.tilde
+    - pymdownx.details
+
+extra_css:
+    #- css/extra.css
+    - css/details.css
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    - js/details.js
+
+nav:
+- Home: index.md
+- The Trainers: trainers/trainers.md
+- Hands-on Modules:
+    - Data Introduction: 00_data_intro/handout/handout.md
+    - Tokenization: 01_tokenization/handout/handout.md
+    - ML model: 02_RF_model/handout/handout.md
+- License: license.md
